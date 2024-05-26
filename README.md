@@ -119,7 +119,7 @@ version 16.3.2
 no service timestamps log datetime msec
 no service timestamps debug datetime msec
 no service password-encryption
-!
+
 hostname Switch
 
 
@@ -139,259 +139,231 @@ ip dhcp pool vlan40
 ip dhcp pool vlan50
  network 192.168.50.0 255.255.255.0
  default-router 192.168.50.1
-!
-!
-!
+
 no ip cef
 no ipv6 cef
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
+
+
 spanning-tree mode pvst
-!
-!
-!
-!
-!
-!
+
 interface GigabitEthernet1/0/1
  no switchport
  ip address 10.10.10.2 255.255.255.252
  duplex auto
  speed auto
-!
+
 interface GigabitEthernet1/0/2
  switchport access vlan 50
  switchport mode trunk
-!
+
 interface GigabitEthernet1/0/3
  switchport access vlan 50
  switchport mode trunk
-!
+
 interface GigabitEthernet1/0/4
  switchport access vlan 50
  switchport mode trunk
-!
+
 interface GigabitEthernet1/0/5
-!
+
 interface GigabitEthernet1/0/6
-!
+
 interface GigabitEthernet1/0/7
-!
+
 interface GigabitEthernet1/0/8
-!
+
 interface GigabitEthernet1/0/9
-!
+
 interface GigabitEthernet1/0/10
-!
+
 interface GigabitEthernet1/0/11
-!
+
 interface GigabitEthernet1/0/12
-!
+
 interface GigabitEthernet1/0/13
-!
+
 interface GigabitEthernet1/0/14
-!
+
 interface GigabitEthernet1/0/15
-!
+
 interface GigabitEthernet1/0/16
-!
+
 interface GigabitEthernet1/0/17
-!
+
 interface GigabitEthernet1/0/18
-!
+
 interface GigabitEthernet1/0/19
-!
+
 interface GigabitEthernet1/0/20
-!
+
 interface GigabitEthernet1/0/21
-!
+
 interface GigabitEthernet1/0/22
-!
+
 interface GigabitEthernet1/0/23
-!
+
 interface GigabitEthernet1/0/24
-!
+
 interface GigabitEthernet1/1/1
-!
+
 interface GigabitEthernet1/1/2
-!
+
 interface GigabitEthernet1/1/3
-!
+
 interface GigabitEthernet1/1/4
-!
+
 interface Vlan1
  no ip address
  shutdown
-!
+
 interface Vlan10
  mac-address 0009.7c09.8801
  ip address 192.168.10.1 255.255.255.0
-!
+
 interface Vlan20
  mac-address 0009.7c09.8802
  ip address 192.168.20.1 255.255.255.0
-!
+
 interface Vlan30
  mac-address 0009.7c09.8803
  ip address 192.168.30.1 255.255.255.0
-!
+
 interface Vlan40
  mac-address 0009.7c09.8804
  ip address 192.168.40.1 255.255.255.0
-!
+
 interface Vlan50
  mac-address 0009.7c09.8805
  ip address 192.168.50.1 255.255.255.0
-!
 
 --------------------------------------------------------------------------------------------------------------------------------------
 Dit is een voorbeeld van de configuratie op de switch
 
-!
+
 version 15.0
 no service timestamps log datetime msec
 no service timestamps debug datetime msec
 no service password-encryption
-!
+
 hostname Switch
-!
-!
-!
-!
-!
-!
+
+
+
 spanning-tree mode pvst
 spanning-tree extend system-id
-!
+
 interface FastEthernet0/1
  switchport mode trunk
-!
+
 interface FastEthernet0/2
  switchport access vlan 10
  switchport mode access
-!
+
 interface FastEthernet0/3
  switchport access vlan 10
  switchport mode access
-!
+
 interface FastEthernet0/4
  switchport access vlan 10
  switchport mode access
-!
+
 interface FastEthernet0/5
  switchport access vlan 20
  switchport mode access
-!
+
 interface FastEthernet0/6
  switchport access vlan 20
  switchport mode access
-!
+
 interface FastEthernet0/7
  switchport access vlan 20
  switchport mode access
-!
+
 interface FastEthernet0/8
  switchport access vlan 20
  switchport mode access
-!
+
 interface FastEthernet0/9
  switchport access vlan 20
  switchport mode access
-!
+
 interface FastEthernet0/10
  switchport access vlan 30
  switchport mode access
-!
+
 interface FastEthernet0/11
  switchport access vlan 30
  switchport mode access
-!
+
 interface FastEthernet0/12
  switchport access vlan 30
  switchport mode access
-!
+
 interface FastEthernet0/13
  switchport access vlan 30
  switchport mode access
-!
+
 interface FastEthernet0/14
  switchport access vlan 30
  switchport mode access
-!
+
 
 interface FastEthernet0/15
  switchport access vlan 40
  switchport mode access
-!
+
 interface FastEthernet0/16
  switchport access vlan 40
  switchport mode access
-!
+
 interface FastEthernet0/17
  switchport access vlan 40
  switchport mode access
-!
+
 interface FastEthernet0/18
  switchport access vlan 40
  switchport mode access
-!
+
 interface FastEthernet0/19
  switchport access vlan 40
  switchport mode access
-!
+
 interface FastEthernet0/20
  switchport access vlan 50
  switchport mode access
-!
+
 interface FastEthernet0/21
  switchport access vlan 50
  switchport mode access
-!
+
 interface FastEthernet0/22
  switchport access vlan 50
  switchport mode access
-!
+
 interface FastEthernet0/23
  switchport access vlan 50
  switchport mode access
-!
+
 interface FastEthernet0/24
  switchport access vlan 50
  switchport mode access
-!
+
 interface GigabitEthernet0/1
-!
+
 interface GigabitEthernet0/2
-!
+
 interface Vlan1
  no ip address
  shutdown
-!
-!
-!
-!
+
 line con 0
-!
+
 line vty 0 4
  login
 line vty 5 15
  login
-!
-!
-!
-!
+
+
 end
 
 ------------------------------------------------------------------------------------------------------------
