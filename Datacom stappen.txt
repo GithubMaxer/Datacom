@@ -1,0 +1,22 @@
+Pc > cmd
+
+ipconfig 
+
+ssh -l (Admin) (default gateway ip adres)
+admin wachtwoord
+
+show lldp neighbors (Hier kan je zien hoeveelrouters, switches, access points, etc. zijn verbonden0
+
+show lldp neighbors detail (hier zie je heel wat info zoals de snelheid van de kable, 1000baseT (HD) = 1GB)
+
+(Tip, sinds j een tekening moet maken maar dit meteen terwijl je naar alle connecties kijkt, noteerd meteen alles)
+
+enable
+(log in)
+
+sh run (Nu kan je de ip's van de andere routers zien)
+
+Kijk nu naar het ip adres van 1 van de apparaten waarmee de router verbonden is, je kan met ssh verbinden met het apparaat. Voer dan de zelfde stappen weer uit. Doe dit tot dat je het hele netwerk in kaart heb gebragd
+
+De commando show cdp neighbors kan ook gebruikt worden als vervanger voor show lldp neighbors
+De commando show cdp entry * kan gebruikt worden om de op adressen te zien van de routers waarmee je moet verbinden

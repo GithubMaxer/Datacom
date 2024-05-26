@@ -1,0 +1,54 @@
+SSH configureren
+
+1.	Typ enable en dan config t  
+2.	Configureer de hostname met de commando hostname <host name>  
+3.	Typ nu de commando ip domain-name <domain name>   
+4.	Type nu de commando crypto key generate rsa. Wanneer het je vraagt hoeveel bits typ 2048 
+  
+5.	Voer nu de commando ip ssh version 2   
+6.	Typ nu de commando’s line vty 0 4 > transport input ssh > login local  
+7.	Typ nu de command username <username> password <wachtwoord> en dan exit
+---------------------------------------------------------------------------------------------------------------
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostname test123
+test123(config)#ip domain-name Bomba
+test123(config)#cry
+test123(config)#crypto k
+test123(config)#crypto key g
+test123(config)#crypto key generate r
+test123(config)#crypto key generate rsa 
+The name for the keys will be: test123.Bomba
+Choose the size of the key modulus in the range of 360 to 4096 for your
+  General Purpose Keys. Choosing a key modulus greater than 512 may take
+  a few minutes.
+
+How many bits in the modulus [512]: 2048
+% Generating 2048 bit RSA keys, keys will be non-exportable...[OK]
+
+test123(config)#ip ssh ver
+*Mar 1 1:38:12.701: %SSH-5-ENABLED: SSH 1.99 has been enabled
+test123(config)#ip ssh version 2
+test123(config)#lin
+test123(config)#line v
+test123(config)#line vty 0 4
+test123(config-line)#tr
+test123(config-line)#transport i
+test123(config-line)#transport input s
+test123(config-line)#transport input ssh 
+test123(config-line)#lo
+test123(config-line)#login loca
+test123(config-line)#login local 
+test123(config-line)#us
+test123(config-line)#user
+test123(config-line)#username amdin password admin
+test123(config)#end
+test123#
+%SYS-5-CONFIG_I: Configured from console by console
+
+test123#copy run start
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+test123#

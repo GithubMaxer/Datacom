@@ -1,0 +1,40 @@
+Router
+
+Router> enable
+Router# configure terminal
+Router(config)# router ospf 1
+Router(config-router)# network 10.10.10.0 0.0.0.3 area 0
+Router(config-router)# network 10.10.11.0 0.0.0.3 area 0
+Router(config-router)# network 192.168.10.0 0.0.0.255 area 0
+Router(config-router)# end
+Router#
+
+Letop: wanneer je OSPF configureerd moet elk netwerk in de zelfde aera zitten, in dit geval is dat area 0.
+Als je dat niet doet ga je errors krijgen. 
+Het genen na het ip adres is de wild card mask van het ip adres. Als je niet weet wat de wildcard mask is van jou subnet mask kan je dit makkelijk opzoeken.
+De wildcard mask van een /24 adres (dus 255.255.255.0) is 0.0.0.255.
+De wildcard mask van een /30 adres (dus 255.255.255.252) is 0.0.0.3
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+MLS configuraties.
+
+Switch> enable
+Switch# configure terminal
+Switch(config)# ip routing (ip routing moet je instellen anders kan je ospf niet instellen)
+Switch(config)# router ospf 1
+Switch(config-router)# network 10.10.10.0 0.0.0.3 area 0
+Switch(config-router)# network 192.168.10.0 0.0.0.255 area 0
+Switch(config-router)# network 192.168.20.0 0.0.0.255 area 0
+Switch(config-router)# network 192.168.30.0 0.0.0.255 area 0
+Switch(config-router)# network 192.168.40.0 0.0.0.255 area 0
+Switch(config-router)# network 192.168.50.0 0.0.0.255 area 0
+Switch(config-router)# end
+Switch#
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Om ospf te controleren kan je de volgende commandos gebruiken
+Router# show ip ospf neighbor
+Switch# show ip ospf neighbor
+
+Router# show ip route ospf
+Switch# show ip route ospf
+

@@ -1,0 +1,18 @@
+Router> enable
+Router# configure terminal
+Router(config)# lldp run
+Router(config)# end
+Router# write memory
+
+Testen van LLDP
+Om LLDP te testen en te verifiëren dat apparaten elkaar zien:
+
+Verbind apparaten:
+Zorg ervoor dat alle apparaten die je wilt monitoren met LLDP zijn verbonden via de juiste poorten.
+
+Gebruik de show lldp neighbors-commando op meerdere apparaten:
+
+Voer dit commando uit op verschillende routers en switches in je netwerk om te verifiëren dat ze hun buren detecteren.
+Controleer gedetailleerde informatie:
+
+Gebruik het commando show lldp neighbors detail voor meer gedetailleerde informatie over elk gedetecteerd apparaat

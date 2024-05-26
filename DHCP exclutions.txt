@@ -1,0 +1,5 @@
+om een ip range te excluten zo dat het niet word gegeven aan apparaten gebruik je de volgende commando.
+
+Switch(config)#ip dhcp excluded-address 192.168.20.1 192.168.20.100
+
+Je moet de range starten bij x.1 anders werkt het niet
