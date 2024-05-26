@@ -548,6 +548,8 @@ test123(config-line)#user
 
 test123(config-line)#username amdin password admin
 
+Router0(config)#enable password admin
+
 test123(config)#end
 
 test123#
