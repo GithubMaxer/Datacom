@@ -121,10 +121,8 @@ no service timestamps debug datetime msec
 no service password-encryption
 !
 hostname Switch
-!
-!
-!
-!
+
+
 ip dhcp pool vlan10
  network 192.168.10.0 255.255.255.0
  default-router 192.168.10.1
