@@ -23,6 +23,7 @@ De commando show cdp entry * kan gebruikt worden om de op adressen te zien van d
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 DHCP exclution
+
 om een ip range te excluten zo dat het niet word gegeven aan apparaten gebruik je de volgende commando.
 
 Switch(config)#ip dhcp excluded-address 192.168.20.1 192.168.20.100
@@ -32,9 +33,13 @@ Je moet de range starten bij x.1 anders werkt het niet
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Router> enable
+
 Router# configure terminal
+
 Router(config)# lldp run
+
 Router(config)# end
+
 Router# write memory
 
 Testen van LLDP
@@ -55,25 +60,35 @@ Gebruik het commando show lldp neighbors detail voor meer gedetailleerde informa
 How to configure MLS for vlans
 
 en
+
 conf t
+
 vlan (vlan nummer)
+
 interface vlan (vlan nummer)
+
 (nu word de vlan status verandered naar up)
+
 ip address (ip adress) (subnetmask)
+
 exit
+
 (doe dit voor alle vlans die je moet aan maken)
 
 ----------------------------------------------------
 VTP configuratie
 
 vtp domain (naam die je aan het domein wilt geven)
+
 vtp mode server (De MLS (mulity layer switch) word als server in gesteld, de normalen switches worden als client ingesteld)
 
 ------------------------------------------------------------------------------------------------------------------------------------
 DHCP configuratie
 
 ip dhcp pool (naam van de dhcp, als je de dhcp aan maakt voor een vlan geeft het gewoon de naam van de vlan voor handigheid)
+
 network (ip adress) (dus als jouw ip adres 192.168.10.0/24 is dan word de commando network 192.168.10.0 255.255.255.0)
+
 default-router (ip adres van de vlan) (dus als je bij de vlan het ip adres 192.168.10.1 hebt gegeven dan word de commando: default-router 192.168.10.1)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -90,12 +105,19 @@ Switch configuratie
 Om dit alles nu uit te delen op de switch doe je het volgende 
 
 en
+
 conf t
+
 vtp domain (vtp domain naam)
+
 vtp mode client
+
 interface range fastethernet0/2 - fastethernet0/4
+
 Switch(config-if-range)# switchport mode acces
+
 Switch(config-if-range)# switchport access vlan 10(vlan 10 is een voorbeeld, zet het juiste vlan nummer neer)
+
 Switch(config-if-range)# no shutdown (no shutdown hoef je alleen uittevoeren als de kabel status down is, dit kan je zien aan de rode puntjes op de kabels. De no shutdown commando verandered de status van de kabel van down naar up)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -106,9 +128,13 @@ Ga naar de pc en zet het ip naar DHCP.
 Als je de error krijgt "DHCP failed. APIPA is being used" dan moet je gaan trouble shooten.
 
 check dat alle kabels die op trunk horen te staan op trunk zijn.
+
 check dat alle kabels die op access moeten zijn op access zijn
+
 check de dhcp configuratie
+
 check de vtp configuratie
+
 zet ip routing aan indien nodig. Dit doe je met de commando: ip routing
 
 ----------------------------------------------------------------------------------------------------------------------
@@ -116,8 +142,11 @@ Dit is een voorbeeld voor de configuratie op de MLS
 
 !
 version 16.3.2
+
 no service timestamps log datetime msec
+
 no service timestamps debug datetime msec
+
 no service password-encryption
 
 hostname Switch
@@ -126,16 +155,20 @@ hostname Switch
 ip dhcp pool vlan10
  network 192.168.10.0 255.255.255.0
  default-router 192.168.10.1
+ 
  dns-server 10.10.10.1
 ip dhcp pool vlan20
  network 192.168.20.0 255.255.255.0
  default-router 192.168.20.1
+ 
 ip dhcp pool vlan30
  network 192.168.30.0 255.255.255.0
  default-router 192.168.30.1
+ 
 ip dhcp pool vlan40
  network 192.168.40.0 255.255.255.0
  default-router 192.168.40.1
+ 
 ip dhcp pool vlan50
  network 192.168.50.0 255.255.255.0
  default-router 192.168.50.1
@@ -373,34 +406,55 @@ OSPF instellen
 Router
 
 Router> enable
+
 Router# configure terminal
+
 Router(config)# router ospf 1
+
 Router(config-router)# network 10.10.10.0 0.0.0.3 area 0
+
 Router(config-router)# network 10.10.11.0 0.0.0.3 area 0
+
 Router(config-router)# network 192.168.10.0 0.0.0.255 area 0
+
 Router(config-router)# end
+
 Router#
 
 Letop: wanneer je OSPF configureerd moet elk netwerk in de zelfde aera zitten, in dit geval is dat area 0.
 Als je dat niet doet ga je errors krijgen. 
+
 Het genen na het ip adres is de wild card mask van het ip adres. Als je niet weet wat de wildcard mask is van jou subnet mask kan je dit makkelijk opzoeken.
+
 De wildcard mask van een /24 adres (dus 255.255.255.0) is 0.0.0.255.
+
 De wildcard mask van een /30 adres (dus 255.255.255.252) is 0.0.0.3
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 MLS configuraties.
 
 Switch> enable
+
 Switch# configure terminal
+
 Switch(config)# ip routing (ip routing moet je instellen anders kan je ospf niet instellen)
+
 Switch(config)# router ospf 1
+
 Switch(config-router)# network 10.10.10.0 0.0.0.3 area 0
+
 Switch(config-router)# network 192.168.10.0 0.0.0.255 area 0
+
 Switch(config-router)# network 192.168.20.0 0.0.0.255 area 0
+
 Switch(config-router)# network 192.168.30.0 0.0.0.255 area 0
+
 Switch(config-router)# network 192.168.40.0 0.0.0.255 area 0
+
 Switch(config-router)# network 192.168.50.0 0.0.0.255 area 0
+
 Switch(config-router)# end
+
 Switch#
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
