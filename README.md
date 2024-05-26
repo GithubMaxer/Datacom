@@ -565,3 +565,9 @@ Building configuration...
 [OK]
 
 test123#
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bpdu gaurd, hoe je het aan zet
+
+https://www.cbtnuggets.com/blog/technology/networking/what-is-bpdu-guard
